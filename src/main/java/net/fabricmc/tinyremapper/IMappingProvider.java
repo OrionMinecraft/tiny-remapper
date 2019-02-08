@@ -19,7 +19,17 @@ package net.fabricmc.tinyremapper;
 
 import java.util.Map;
 
+/**
+ * Mapping provider interface
+ */
 @FunctionalInterface
 public interface IMappingProvider {
+	/**
+	 * Loads mappings into {@link TinyRemapper}
+	 *
+	 * @param classMap Class mappings in 'Foo' to 'bar/Baz' format
+	 * @param fieldMap Field mappings in 'Foo/field;;LBar;' to 'bar/Baz/name' format (mapped names do not have descriptors)
+	 * @param methodMap Method mappings in 'Foo/a(V)LBar;' to 'bar/Baz/getInfo' format (mapped names do not have descriptors)
+	 */
 	void load(Map<String, String> classMap, Map<String, String> fieldMap, Map<String, String> methodMap);
 }
